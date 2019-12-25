@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "proto";
+option java_outer_classname = "FlightReservationsProto";
+
+package proto;
+
+service FlightService {
+
+    rpc login (Agency) returns (LoginResponse) {}
+    rpc getAllFlights(Void) returns (stream Flight) {}
+    rpc getByDestAndDate(GetByDestAndDateRequest) returns (stream Flight) {}
+    rpc addClient(Client) returns (Void){}
+    rpc getClientId(Client) returns (Client) {}
+    rpc saveTicket(Ticket) returns (Void) {}
+    rpc updateFlightPlaces(Flight) returns (Void) {}
+    rpc notifyAgencies(Void) returns (UpdateResponse) {}
+}
+
+
+message Agency {
+    string username = 1;
+    string password = 2;
+}
+
+message Client {
+    int32 id = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string address = 4;
+}
+
+message Flight {
+    int32 id = 1;
+    string destination = 2;
+    string date = 3;
+    string time = 4;
+    string airport = 5;
+    int32 places = 6;
+}
+
+message Ticket {
+    int32 id = 1;
+    int32 clientId = 2;
+    int32 flightId = 3;
+    string touristFirstName = 4;
+    string touristLastName = 5;
+}
+
+message LoginResponse {
+    bool successful = 1;
+}
+
+message Void {
+
+}
+
+message UpdateResponse {
+    
+}
+
+message GetByDestAndDateRequest {
+    string destination = 1;
+    string date = 2;
+}
+
+
+
+
