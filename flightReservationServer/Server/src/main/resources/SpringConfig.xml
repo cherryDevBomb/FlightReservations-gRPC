@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <util:properties id="jdbcProps" location="classpath:bd.config"/>
+
+    <bean id="jdbcUtils" class="repository.JdbcUtils">
+        <constructor-arg ref="jdbcProps" />
+    </bean>
+
+    <bean id="agencyRepo" class="repository.AgencyRepository">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+
+    <bean id="flightRepo" class="repository.FlightRepository">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+
+    <bean id="clientRepo" class="repository.ClientRepository">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+
+    <bean id="ticketRepo" class="repository.TicketRepository">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+
+
+</beans>

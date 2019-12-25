@@ -1,0 +1,6 @@
+rootProject.name = 'flights'
+include 'Model'
+include 'Client'
+include 'Networking'
+include 'Server'
+
